@@ -32,7 +32,6 @@ def validaTel(cadena):
     else:
         return False
 
-
 def validaRFC(cadena):
     patronRFC = "^[a-zA-Z]{4}[\d]{6}[a-zA-Z\d]{3}"
     banderaRFC = re.search(patronRFC, cadena)
@@ -87,7 +86,6 @@ def validaCURP(cadena):
                         return False
                     else:
                         return True
-
             else:
                 return False
 
@@ -98,7 +96,6 @@ if __name__ == '__main__':
                        "ve14893@innovaccion.mx",
                        "IECA.Tres@cinvestav.mx",
                        "scorch316@ieee.org")
-
     correosIncorrectos = ("juan.valenzuela_curso.python.mx",
                          "@gmail.com",
                          "15240784@leon",
@@ -121,13 +118,11 @@ if __name__ == '__main__':
                     "(081)8499485",
                     "(05) 5323 9077",
                     "(479) 123-4567")
-
     numIncorrectos = ("(33)12345678",
                       "492 765 2839",
                       "346-304-3094",
                       "AFAA930918"
                       )
-
     print("\nDEMO DE TELEFONOS VALIDOS")
     for i in numCorrectos:
         if (validaTel(i)):
@@ -141,19 +136,15 @@ if __name__ == '__main__':
         else:
             print(f"El telefono {i} es invalido")
 
-
-
     rfcCorrectos = ("AEAF970221KX9",
                     "MERA010701TY8",
                     "mAhC970513uQ9"
                     )
-
     rfcIncorrectos = ("AE_F970221KX9",
                       "8935389453TPM",
                       "a2t30406309V8",
                       "AFAA930918"
                       )
-
     print("\nDEMO DE RFC VALIDOS")
     for i in rfcCorrectos:
         if (validaRFC(i)):
@@ -174,7 +165,6 @@ if __name__ == '__main__':
                      "MERA010701HGTNMNA9",
                      "mahc970513hgtrrs06"
                      )
-
     curpIncorrectas = ("A2T3040630MGTUZRX7",
                        "aetaATIAPXHGTzdf89",
                        "EBDCTXR2X7xdw389vv",
@@ -187,7 +177,6 @@ if __name__ == '__main__':
                        "mahc970513hwwrrs06",
                        "AFAA930918"
                        )
-
     print("\nDEMO DE CURP VALIDOS")
     for i in curpCorrectas:
         if (validaCURP(i)):
@@ -200,5 +189,3 @@ if __name__ == '__main__':
             print(f"El CURP [{i}] es valido")
         else:
             print(f"El CURP [{i}] es invalido")
-
-
