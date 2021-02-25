@@ -1,4 +1,4 @@
-# DESCRIPCION:  Main de la Tarea 3 - Validacion de correo, telefono,
+# DESCRIPCION:  Main de la Tarea 2 - Validacion de correo, telefono,
 #               CURP y RFC a través de expresiones regulares.
 # AUTHOR:       Félix Armenta Aguiñaga - IECA PADTS 3
 

@@ -1,4 +1,4 @@
-# DESCRIPCION:  Modulo para validacion de correos, telefonos, CURP y RFC
+# DESCRIPTION:  Modulo para validacion de correos, telefonos, CURP y RFC
 #               Vease el ejemplo dentro de if __name__ == '__main__':
 #               para distinguir los formatos validos e invalidos.
 # AUTHOR:       Félix Armenta Aguiñaga - IECA PADTS 3
