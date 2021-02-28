@@ -41,6 +41,7 @@ def validaRFC(cadena):
         return True
 
 def validaCURP(cadena):
+    # En la parte de la CURP [H|M] para que sea forzoso uno u otro
     patronCURP = "[a-zA-Z]{4}\d{6}[HMhm][a-zA-Z]{5}[a-zA-Z0-9]\d"
     banderaCURP = re.match(patronCURP, cadena)
     if (banderaCURP is None):
