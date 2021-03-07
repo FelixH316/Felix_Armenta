@@ -56,7 +56,7 @@ class Estudiante:
 
     def updateNoControl(self, noControl=None):
         if noControl is not None:
-            self.__noControl = 20240000 + noControl
+            self.__noControl = noControl
             return True
         else:
             return False

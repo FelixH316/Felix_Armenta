@@ -13,21 +13,39 @@ from paqueteT4.StudentIOv2 import Estudiante
 class estudiantes(Document):
     nombre = StringField(required=True, max_length=70)
     correo = StringField(required=True, max_length=70)
-    contrasena = StringField(required=True, max_length=20)
+    contrasena = StringField(required=True, max_length=50)
     materias = ListField(required=True)
-    noControl = IntField(required=True, min_value=15240000, max_value=20249999)
-    fecha = DateField(default=datetime.now())
+    noControl = IntField(required=True, min_value=10240000, max_value=20249999)
+    fecha = DateTimeField(default=datetime.now())
 
 
-class studentMongoManager():
-
+class studentMongoManager:
     def __init__(self):
         connect("IECA", host="localhost", port=27017)
-        listaConteo = estudiantes.objects()
-        if listaConteo:
-            self.conteo = len(listaConteo)
+        self.conteo = len(estudiantes.objects())
+
+    def generarNoControl(self):
+        nc = self.conteo
+        nc += 20240000
+        while self.validarNoCotrol(nc):
+            nc += 1
+            self.conteo += 1
+        return nc
+
+    def validarNoCotrol(self, newNoControl, oldNoControl=None):
+        if (newNoControl < 10240000) or (newNoControl > 20249999):
+            print("\tNo de control no valido, rango de 10240000 a 20249999")
+            return True
+        lista = estudiantes.objects()
+        if lista:
+            if newNoControl == oldNoControl:
+                return False
+            for i in range(len(lista)):
+                if newNoControl == lista[i].noControl:
+                    return True
+            return False
         else:
-            self.conteo = 0
+            return False
 
     def guardarEstudiante(self, student):
         post = estudiantes(
@@ -36,22 +54,25 @@ class studentMongoManager():
             contrasena=student.getContra(),
             materias=student.getMaterias(),
             noControl=student.getNoControl(),
+            fecha=datetime.now()
         )
         post.save()
         print(f"\tEstudiante {student.getNoControl()} guardado")
-        self.conteo += 1
 
     def mostrarEstudiantes(self):
         # print("\n\tNo. CONTROL\tNOMBRE\tCORREO\t\t\t\t\t\tPASSWORD")
         listaDB = estudiantes.objects()
-        j = 0
-        while (j < len(listaDB)):
-            subjects = listaDB[j].materias
-            print(f"\tNumero de Control: {listaDB[j].noControl} ______________________________________________")
-            print(f"\tNombre: {listaDB[j].nombre} - Correo: {listaDB[j].correo} - Contrasena: {listaDB[j].contrasena}")
-            print(f"\tMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
-            print(" ")
-            j+=1
+        if listaDB:
+            j = 0
+            while (j < len(listaDB)):
+                subjects = listaDB[j].materias
+                print(f"\tNumero de Control: {listaDB[j].noControl} ______________________________________________")
+                print(f"\tNombre: {listaDB[j].nombre} - Correo: {listaDB[j].correo} - Contrasena: {listaDB[j].contrasena}")
+                print(f"\tMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
+                print(" ")
+                j+=1
+        else:
+            print("\t No hay estudiantes en la base de datos")
 
     def agregarEstudiante(self):
         name = input("\tIngresa nombre: ")
@@ -62,13 +83,14 @@ class studentMongoManager():
         sub3 = input("\tIngresa materia 3: ")
         subLista = [sub1, sub2, sub3]
         alumno = Estudiante(name, mail, password, subLista)
-        alumno.updateNoControl(self.conteo)
+        alumno.updateNoControl(self.generarNoControl())
         self.guardarEstudiante(alumno)
 
     def editarEstudiante(self):
         self.mostrarEstudiantes()
         seleccion = input("\tIngresa el No. de Control del estudiante a modificar: ")
         modificado = estudiantes.objects(noControl=int(seleccion))
+        # print(type(modificado)) # Modificado trae una lista de objetos
         name = input("\tIngresa nombre: ")
         mail = input("\tIngresa correo: ")
         password = input("\tIngresa contrasena: ")
@@ -77,14 +99,23 @@ class studentMongoManager():
         sub3 = input("\tIngresa materia 3: ")
         subLista = [sub1, sub2, sub3]
         nc = input("\tIngresa numero de control: ")
-        modificado.update(nombre=name, correo=mail, contrasena=password,
-                          materias=subLista, noControl=int(nc))
+        while self.validarNoCotrol(int(nc), int(seleccion)):
+            nc = input("\tWARNING repetido, ingresa numero de control: ")
+        modificado[0].update(nombre=name, correo=mail, contrasena=password,
+                             materias=subLista, noControl=int(nc), fecha=datetime.now())
+        print(f"\tEstudiante {modificado[0].noControl} editado")
+
 
     def eliminarEstudiante(self):
         self.mostrarEstudiantes()
         seleccion = input("\tIngresa el No. de Control del estudiante a eliminar: ")
         eliminado = estudiantes.objects(noControl=int(seleccion))
-        eliminado.delete()
+        if eliminado:
+            print(f"\tEstudiante {eliminado[0].noControl} eliminado")
+            eliminado[0].delete()
+        else:
+            print(f"\tWARNING: No se encontro estudiante {int(seleccion)}")
+
 
 if __name__ == '__main__':
     correr = True
@@ -109,12 +140,16 @@ if __name__ == '__main__':
 
         if ans == '1':
             print("\n\tSUBIENDO A BASE DE DATOS...")
-            studentList = []
-            for i in range(5):
-                objeto = Estudiante(*studentData[i])
-                objeto.updateNoControl(i)
-                studentList.append(objeto)
-                admi.guardarEstudiante(studentList[i])
+            if estudiantes.objects():
+                print("\tWARNING: la base de datos ya tiene objetos")
+
+            else:
+                studentList = []
+                for i in range(5):
+                    objeto = Estudiante(*studentData[i])
+                    objeto.updateNoControl(admi.generarNoControl())
+                    studentList.append(objeto)
+                    admi.guardarEstudiante(studentList[i])
         elif ans == '2':
             print("\n\tMOSTRANDO ESTUDIANTES...")
             admi.mostrarEstudiantes()
