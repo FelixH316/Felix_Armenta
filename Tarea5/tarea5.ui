@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>484</width>
+    <height>588</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>221</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>REGISTRO</string>
+   </property>
+   <widget class="QPushButton" name="registrarB">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>190</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Registrar</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>201</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="regNombreL">
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="regNombreLE"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="regCorreoLE"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="regContraLE"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="regCorreoL">
+       <property name="text">
+        <string>Correo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="regContraL">
+       <property name="text">
+        <string>Contraseña</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="regMat1L">
+       <property name="text">
+        <string>Materia 1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="regMat2L">
+       <property name="text">
+        <string>Materia 2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="regMat3L">
+       <property name="text">
+        <string>Materia 3</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="regMat1LE"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="regMat2LE"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="regMat3LE"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>50</y>
+     <width>221</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>EDICION</string>
+   </property>
+   <widget class="QPushButton" name="actualizarB">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>240</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Actualizar</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>201</width>
+      <height>204</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="1" column="0">
+      <widget class="QLabel" name="edNoConL">
+       <property name="text">
+        <string>No Control</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="edNoConLE"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="edNombreL">
+       <property name="text">
+        <string>Nombre</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="edNombreLE"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="edCorreoL">
+       <property name="text">
+        <string>Correo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="edCorreoLE"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="edContraL">
+       <property name="text">
+        <string>Contraseña</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="edContraLE"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="edMat1L">
+       <property name="text">
+        <string>Materia 1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="edMat1LE"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="edMat2L">
+       <property name="text">
+        <string>Materia 2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="edMat2LE"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="edMat3L">
+       <property name="text">
+        <string>Materia 3</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="edMat3LE"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="edBusquedaL">
+       <property name="text">
+        <string>Busqueda</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="edBusquedaLE"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>461</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>MOSTRAR</string>
+   </property>
+   <widget class="QTextEdit" name="pantallaTE">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>441</width>
+      <height>161</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>221</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>BAJA</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_3">
+     <item row="0" column="0">
+      <widget class="QLabel" name="boNoConL">
+       <property name="text">
+        <string>No Control</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="boNoConLE"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="borrarB">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>60</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Borrar</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>451</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>SELECTOR</string>
+   </property>
+   <widget class="QPushButton" name="selectorB">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>20</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Seleccionar</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="selectorCB">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>341</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Selecciona una opcion</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Publicar registro inicial</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mostrar estudiantes</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Editar estudiante</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Registrar estudiante</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Eliminar estudiante</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
