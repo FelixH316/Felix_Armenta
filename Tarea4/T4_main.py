@@ -68,7 +68,14 @@ class studentMongoManager:
                 subjects = listaDB[j].materias
                 print(f"\tNumero de Control: {listaDB[j].noControl} ______________________________________________")
                 print(f"\tNombre: {listaDB[j].nombre} - Correo: {listaDB[j].correo} - Contrasena: {listaDB[j].contrasena}")
-                print(f"\tMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
+                # print(f"\tMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
+                # [PV] Sugerencia para mostrar de 0 a 3 materias, para usar de 0 a N usar un loop
+                if len(subjects) > 0:
+                    print(f"\tMateria 1: {subjects[0]}")
+                if len(subjects) > 1:
+                    print(f"\tMateria 2: {subjects[1]}")
+                if len(subjects) > 2:
+                    print(f"\tMateria 3: {subjects[2]}")
                 print(" ")
                 j+=1
         else:
