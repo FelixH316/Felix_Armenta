@@ -80,7 +80,14 @@ class Interfaz(QMainWindow):
                 subjects = listaDB[j].materias
                 self.ui.pantallaTE.insertPlainText(f"Numero de Control: {listaDB[j].noControl} ______")
                 self.ui.pantallaTE.insertPlainText(f"\nNombre: {listaDB[j].nombre} - Correo: {listaDB[j].correo} - Contrasena: {listaDB[j].contrasena}")
-                self.ui.pantallaTE.insertPlainText(f"\nMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
+                # self.ui.pantallaTE.insertPlainText(f"\nMateria 1: {subjects[0]} - Materia 2: {subjects[1]} - Materia 3: {subjects[2]}")
+                # [PV] Sugerencia para mostrar de 0 a 3 materias, para usar de 0 a N usar un loop
+                if len(subjects) > 0:
+                    self.ui.pantallaTE.insertPlainText(f"\n\tMateria 1: {subjects[0]}\n")
+                if len(subjects) > 1:
+                    self.ui.pantallaTE.insertPlainText(f"\tMateria 2: {subjects[1]}\n")
+                if len(subjects) > 2:
+                    self.ui.pantallaTE.insertPlainText(f"\tMateria 3: {subjects[2]}\n")
                 self.ui.pantallaTE.insertPlainText("\n\n")
                 j+=1
         else:
